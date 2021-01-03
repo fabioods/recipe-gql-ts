@@ -1,13 +1,11 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const Recipe = new mongoose.Schema({
+const RecipeSchema = new Schema({
   title: { type: String },
 
   description: { type: String },
 
-  creationDate: { type: Date },
-
   ingredients: { type: Array<String>() },
 });
 
-export default mongoose.model('Recipe', Recipe);
+export default model('Recipe', RecipeSchema);

@@ -51,9 +51,9 @@
     "paths": {
       "@Entities/*": ["./Entities/*"],
       "@Resolvers/*": ["./Resolvers/*"],
-      "@Services/*": ["./Services/*"],
       "@config/*": ["./config/*"],
-      "@Schema/*": ["./Schemas/*"]
+      "@Schema/*": ["./Schemas/*"],
+      "@InputTypes/*": ["./InputTypes/*"]
     } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */,
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
