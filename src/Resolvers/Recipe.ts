@@ -17,6 +17,19 @@ export default class RecipeResolver {
     return recipes;
   }
 
-  // @Mutation(returns => Recipe)
-  // async insertOneRecipe(recipe: RecipeInput) {}
+  @Mutation(returns => RecipeEntity)
+  async insertOneRecipe(@Arg('recipeInput') recipeInput: RecipeInput) {
+    const newRecipe = new RecipeSchema({
+      ...recipeInput,
+      creationDate: new Date(),
+    });
+    await newRecipe.save();
+    return newRecipe;
+  }
+
+  @Mutation(returns => Boolean)
+  async deleteOneRecipe(@Arg('recipeId') recipeId: String) {
+    const recipeDeleted = await RecipeSchema.deleteOne({ _id: recipeId });
+    return recipeDeleted.deletedCount === 1 ? true : false;
+  }
 }

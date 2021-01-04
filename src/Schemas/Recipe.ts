@@ -6,6 +6,8 @@ const RecipeSchema = new Schema({
   description: { type: String },
 
   ingredients: { type: Array<String>() },
+
+  creationDate: { type: Date, default: () => new Date() },
 });
 
 export default model('Recipe', RecipeSchema);
