@@ -1,18 +1,24 @@
-import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import RecipeEntity from '@Entities/Recipe';
 import RecipeInput from '@InputTypes/Recipe';
 import RecipeSchema from '@Schema/Recipe';
 
+type User = {
+  name: string;
+  age: number;
+};
+
 @Resolver()
 export default class RecipeResolver {
   @Query(returns => RecipeEntity)
-  async recipe(@Arg('id') id: string) {
+  async recipe(@Arg('id') id: string, @Ctx('name') name: string) {
     const recipe = await RecipeSchema.findById(id);
     return recipe;
   }
 
   @Query(returns => [RecipeEntity])
-  async recipes() {
+  async recipes(@Ctx('user') user: User) {
+    console.log('user', user);
     const recipes = await RecipeSchema.find();
     return recipes;
   }
